@@ -1,0 +1,48 @@
+<div class="bgcontainer"></div>
+<navbar ></navbar>
+
+<mat-card style="background-color: purple;" class="p-4">
+  
+</mat-card>
+ <div class="row mt-20">
+   <div class="col-sm-3">
+       
+       <mat-card class="purple-bar-10">
+             <mat-form-field>
+            <input class="font-large" (keyup) = "appyFilterValue()" [(ngModel)]="filterValue" name="filterValue" matInput placeholder="Enter text to filter for location"  >
+          </mat-form-field>
+           </mat-card>
+        <div style="overflow-y: scroll;height: 600px;  ">
+          <mat-card class="purple-bar-10">
+            <h2>Select location </h2>
+          <mat-selection-list #county [multiple]="false" >
+            <mat-list-option *ngFor="let _location of locations" [value]="_location">
+              {{_location}}
+              <mat-divider>
+              </mat-divider>
+            </mat-list-option>
+          </mat-selection-list>
+          </mat-card>
+        </div>
+        
+
+   </div>
+   <div class="col-sm-9">
+     <div class="p-20">
+            <div  >
+              <mat-card class=" purple-bar"  >
+                  <h1 class="letter-spacing-3" style="letter-spacing: 3px; ">Anglian water  flood warning</h1>
+                  <hr/>
+                  <h2  >  (Data changes at most every 15 mins)</h2>
+                   
+              </mat-card>
+               
+
+            </div>
+              <div class="mt-20" >
+                 
+                 <template #container ></template>
+              </div>
+              </div>
+   </div>
+ </div>

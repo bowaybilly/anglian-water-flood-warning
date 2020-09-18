@@ -1,0 +1,27 @@
+ 
+<mat-card class="p-4 mt-10 purple-bar" *ngFor="let item of data.items; let i=index">
+    <h1>  AreaName: {{item.eaAreaName}}   <mat-icon style="cursor: pointer;" (click)="refresh(item)" class="float-right">refresh</mat-icon></h1>
+    <hr style="border-color:purple;"/>
+    <span class="float-right badge badge-info p-3">{{item.timeRaised| date: 'dd/MM/yyyy'}}</span>
+    <div class="row">
+        <div class="col-sm-9">
+                <p><span  class='text-description'>Is Tidal</span> :{{item.isTidal}}                             </p>
+                <p><span  class='text-description'>Message</span> :<br/>  {{item.message}} </p>
+                <p><span  class='text-description'>Severity</span> : {{item.severity}}</p>
+                <p><span  class='text-description'>Severity Level</span> : {{item.severityLevel}}</p>
+                <p><span  class='text-description'>Time Message Changed</span> : {{item.timeMessageChanged | date: 'shortTime'}}</p>
+                <p><span  class='text-description'>Time Raised</span> : {{item.timeRaised | date: 'shortTime'}}</p>
+                <p><span  class='text-description'>Time Severity Changed</span> : {{item.timeSeverityChanged | date: 'shortTime'}}</p>
+        </div>
+        <div class="col-sm-3">
+             <img [src]="getImage(item)" alt="#" class="img img-circle img-responsive-lg"/>
+        </div>
+    </div>
+    <hr style="border-color: purple;"/>
+    <div class="row">
+        <div class="col-sm-8">Description: {{item.description}}</div>
+        <div class="col-sm-4">
+           
+        </div>
+    </div>
+</mat-card>
