@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatSelectionList, MatSelectionListChange } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FloodWarningComponent } from './components/flood-warning/flood-warning.component';
 import { IFloodWarning } from './models/IFloodWarning';
 import { IRootobject } from "./models/IRootobject";
 import { ISettings } from './models/ISettings';
 import { Item } from './models/Item';
-import { FloodWarningService } from './services/flood-warning.service';
 import { RepoService } from './services/repo.service';
 import { SettingsService } from './services/settings.service';
 
@@ -20,11 +20,14 @@ export class AppComponent implements AfterViewInit,OnInit {
   settings: ISettings;
   locations: string[];
   floodTitle: string = '';
+  displayProgress: boolean = false;
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
   @ViewChild('county') countyCtrl: MatSelectionList;
   constructor(public settingService: SettingsService,
     private _repoService: RepoService<IFloodWarning>,
-    private resolver:ComponentFactoryResolver
+    private resolver: ComponentFactoryResolver,
+    private _snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
     ) {
     this.locations= this.settingService.settings.counties;
   } 
@@ -35,31 +38,40 @@ export class AppComponent implements AfterViewInit,OnInit {
   getFloodStatus() {
     this.container.clear();
     if (this.filterValue.length > 0) {
+      //load flood warning for selected location
+      this.displayProgress = true;
+       this.cdr.detectChanges();
       this.floodTitle=`Flood warning for ${this.filterValue}`
       this._repoService.get(`?county=${this.filterValue}`)
         .subscribe((response: IRootobject) => {
+          this.displayProgress = false;
           this.renderFloodWarning(response);
-          
-      }, (error: HttpErrorResponse) => {
+        }, (error: HttpErrorResponse) => {
+            this.displayProgress = false;
           console.log(error.message);
     })
     
     } else {
+       //load flood warning for selected location
+      this.displayProgress = true;
       this.filterValue = '';
       this.floodTitle = `United Kingdom flood warnings`;
+       this.cdr.detectChanges();
       this._repoService.get('')
               .subscribe((response: IRootobject) => {
+                this.displayProgress = false;
                 this.renderFloodWarning(response);
-                
               }, (error: HttpErrorResponse) => {
+                   this.displayProgress = false;
                   //log any request errors to console
-                console.log(error.message);
+                  console.log(error.message);
+                  
           })
     
     }
   }
   //render flood report if request returns result
-  private renderFloodWarning(response: IRootobject) {
+ renderFloodWarning(response: IRootobject) {
     if (response.items.length > 0) {
       //dynamically flood warning report on the fly
       const ref = this.container.createComponent(this.resolver.resolveComponentFactory(FloodWarningComponent));
@@ -69,11 +81,14 @@ export class AppComponent implements AfterViewInit,OnInit {
         this.refresh(response);
       });
     } else {
+      //display no flooding message if there isn't any
       this.floodTitle = `No flood warning data for ${this.filterValue}`;
+      this._snackBar.open(this.floodTitle,'',{duration:6000})
     }
   }
 
   ngAfterViewInit(): void {
+   
      this.getFloodStatus();
      this.countyCtrl.selectionChange.subscribe((selected:MatSelectionListChange) => {
        this.filterValue = selected.option.value;
@@ -96,5 +111,10 @@ export class AppComponent implements AfterViewInit,OnInit {
                 console.log(error.message);
           })
     
+  }
+  //current flood status loads all flood warnings
+  currentFloodStatus() {
+    this.filterValue = '';
+    this.getFloodStatus();
   }
 }

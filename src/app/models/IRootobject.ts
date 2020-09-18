@@ -1,5 +1,5 @@
 import { Item } from "./Item";
-import { Meta } from "./Meta";
+import { Meta } from "./IMeta";
 
 export interface IRootobject {
     context: string;

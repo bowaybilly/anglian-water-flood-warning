@@ -1,8 +1,9 @@
 <div class="bgcontainer"></div>
-<navbar ></navbar>
+<mat-spinner *ngIf="displayProgress" style="position: absolute;z-index: 1;top: 50%;left: 50%;"> </mat-spinner>
+<navbar  ></navbar>
 
-<mat-card style="background-color: purple;" class="p-4">
-  
+<mat-card style="padding:0px"  >
+  <div class="bg-purple p-4"></div>
 </mat-card>
  <div class="row mt-20">
    <div class="col-sm-3">
@@ -12,7 +13,7 @@
             <input class="font-large" (keyup) = "appyFilterValue()" [(ngModel)]="filterValue" name="filterValue" matInput placeholder="Enter text to filter for location"  >
           </mat-form-field>
            </mat-card>
-        <div style="overflow-y: scroll;height: 600px;  ">
+        <div class="menu-list">
           <mat-card class="purple-bar-10">
             <h2>Select location </h2>
           <mat-selection-list #county [multiple]="false" >
@@ -33,7 +34,7 @@
               <mat-card class=" purple-bar"  >
                   <h1 class="letter-spacing-3" style="letter-spacing: 3px; ">Anglian water  flood warning</h1>
                   <hr/>
-                  <h2  >  (Data changes at most every 15 mins)</h2>
+                  <h3  >  (Data changes at most every 15 mins) <button (click)=" currentFloodStatus()" class="float-right" mat-raised-button>Current flood warnings</button> </h3>
                    
               </mat-card>
                

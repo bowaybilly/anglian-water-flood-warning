@@ -1,4 +1,4 @@
-import { Floodarea } from "./Floodarea";
+import { Floodarea } from "./IFloodarea";
 
 export interface Item {
     id: string;

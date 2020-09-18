@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://environment.data.gov.uk/flood-monitoring/id/floods'
+  apiUrl: 'http://environment.data.gov.uk/flood-monitoring/id/floods',
+  apiLogUrl:'https://localhost:44385'
 };
 
 /*
