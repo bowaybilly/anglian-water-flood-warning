@@ -24,10 +24,10 @@ export class AppComponent implements AfterViewInit,OnInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
   @ViewChild('county') countyCtrl: MatSelectionList;
   constructor(public settingService: SettingsService,
-    private _repoService: RepoService<IFloodWarning>,
-    private resolver: ComponentFactoryResolver,
-    private _snackBar: MatSnackBar,
-    private cdr: ChangeDetectorRef
+              private _repoService: RepoService<IFloodWarning>,
+              private resolver: ComponentFactoryResolver,
+              private _snackBar: MatSnackBar,
+              private cdr: ChangeDetectorRef
     ) {
     this.locations= this.settingService.settings.counties;
   } 
