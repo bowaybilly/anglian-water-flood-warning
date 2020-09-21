@@ -16,6 +16,7 @@ Libraries used
 ## Backend
 - Aspnet core 2.2  and Microsoft EntityFrameWork 2.2.0
 - Copy embedded api solution to a seperate folder and run solution to allow saving request and response data
+- One post request endpoint written to handle saving request and response data
 `
 
     [Route("api/v1/flood")]
@@ -48,7 +49,10 @@ Libraries used
             return true;
         }
 `
-
+## How to run application
+- Clone this repo on your computer
+- Copy api folder to a location on your hard drive and run solution. 
+- Run npm install to install all packages within project.
 ### How application works
 When application starts
 
