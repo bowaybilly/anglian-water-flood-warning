@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnglianWaterFloodWarningApi", "AnglianWaterFloodWarningApi.csproj", "{DC635553-963D-44BE-9A24-E1AEDF282CFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnglianWaterFloodWarningApi.Test", "..\AnglianWaterFloodWarningApi.Test\AnglianWaterFloodWarningApi.Test.csproj", "{030B653D-786B-4FED-8E9D-D970EC879D48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC635553-963D-44BE-9A24-E1AEDF282CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC635553-963D-44BE-9A24-E1AEDF282CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC635553-963D-44BE-9A24-E1AEDF282CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC635553-963D-44BE-9A24-E1AEDF282CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{030B653D-786B-4FED-8E9D-D970EC879D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{030B653D-786B-4FED-8E9D-D970EC879D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{030B653D-786B-4FED-8E9D-D970EC879D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{030B653D-786B-4FED-8E9D-D970EC879D48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {947D2A9A-3EE5-4D9C-BC18-FA4277752A6C}
+	EndGlobalSection
+EndGlobal
